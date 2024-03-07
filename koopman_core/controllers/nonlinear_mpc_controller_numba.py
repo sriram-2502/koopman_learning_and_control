@@ -236,7 +236,7 @@ class NonlinearMPCControllerNb(Controller):
         else:
             self.cur_u = self.dynamics_object.standardizer_u.inverse_transform(u_init_0)
         u_prev = np.zeros_like(u_init_0)
-
+        print(np.linalg.norm(u_prev) )
         while (iter == 0 or np.linalg.norm(u_prev - self.cur_u) / np.linalg.norm(u_prev) > eps) and iter < max_iter:
             t0 = time.time()
             u_prev = self.cur_u.copy()
